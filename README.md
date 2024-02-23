@@ -23,11 +23,13 @@ Py**T**orch **Im**age **M**odels (timm) is a collection of image models, layers,
 
 Since *torchvision.datasets* doesn't contain ILSVRC dataset, we need to download and configure it by ourselves in an appropriate way to satisfy the requirements of timm library.
 
-Firstly, we create the folder for this project:
+Firstly, we create the folder for this project and split the folder for train set and the folder for test set:
 
 
 ```bash
 mkdir ImageNet_classification
 cd ImageNet_classification
+mkdir train
+mkdir val
 ```
 
