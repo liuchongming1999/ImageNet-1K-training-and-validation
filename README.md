@@ -1,2 +1,13 @@
-# ImageNet-training-scipt
-ImageNet(ILSVRC-2012) training scipt by timm library
+# ImageNet-training-script
+ImageNet(ILSVRC-2012) training script by timm library
+
+## Introduction
+### ImageNet[[1]](1)
+[1] J. Deng, W. Dong, R. Socher, L.-J. Li, K. Li and L. Fei-Fei, **ImageNet: A Large-Scale Hierarchical Image Database.** *IEEE Computer Vision and Pattern Recognition (CVPR), 2009.* [pdf](https://image-net.org/static_files/papers/imagenet_cvpr09.pdf)
+
+[2] Olga Russakovsky*, Jia Deng*, Hao Su, Jonathan Krause, Sanjeev Satheesh, Sean Ma, Zhiheng Huang, Andrej Karpathy, Aditya Khosla, Michael Bernstein, Alexander C. Berg and Li Fei-Fei. (* = equal contribution) **ImageNet Large Scale Visual Recognition Challenge.** *International Journal of Computer Vision, 2015.*
+
+[ImageNet](https://image-net.org/index.php) is an image database organized according to the [WordNet](https://wordnet.princeton.edu/) hierarchy (currently only the nouns), in which each node of the hierarchy is depicted by hundreds and thousands of images. The project has been instrumental in advancing computer vision and deep learning research. The data is available for free to researchers for non-commercial use.
+
+The ImageNet Large Scale Visual Recognition Challenge (ILSVRC)[[2]](2) evaluates algorithms for object detection and image classification at large scale. One high level motivation is to allow researchers to compare progress in detection across a wider variety of objects -- taking advantage of the quite expensive labeling effort. Another motivation is to measure the progress of computer vision for large scale image indexing for retrieval and annotation. This dataset spans 1000 object classes and contains 1,281,167 training images, 50,000 validation images.
+
