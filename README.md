@@ -17,3 +17,17 @@ The ImageNet Large Scale Visual Recognition Challenge (ILSVRC)[[2]](2) evaluates
 
 ### Timm[[3]](3)
 Py**T**orch **Im**age **M**odels (timm) is a collection of image models, layers, utilities, optimizers, schedulers, data-loaders / augmentations, and reference training / validation scripts that aim to pull together a wide variety of SOTA models with ability to reproduce ImageNet training results.
+
+
+## Download ILSVRC dataset in a usable way
+
+Since *torchvision.datasets* doesn't contain ILSVRC dataset, we need to download and configure it by ourselves in an appropriate way to satisfy the requirements of timm library.
+
+Firstly, we create the folder for this project:
+
+
+```bash
+mkdir ImageNet_classification
+cd ImageNet_classification
+```
+
