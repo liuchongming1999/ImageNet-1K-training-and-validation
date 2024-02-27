@@ -32,4 +32,20 @@ cd ImageNet_classification
 mkdir train
 mkdir val
 ```
+Then download training set and validation set on official net:
+```bash
+cd train
+wget https://image-net.org/data/ILSVRC/2012/ILSVRC2012_img_train.tar
+cd..
+cd val
+wget https://image-net.org/data/ILSVRC/2012/ILSVRC2012_img_val.tar
+cd ..
+```
+Decompression training file and configure it in an appropriate way to satisfy the requirements of timm library:
+```bash
+cd train
+tar -xvf ILSVRC2012_img_train.tar
+
+```
+
 
