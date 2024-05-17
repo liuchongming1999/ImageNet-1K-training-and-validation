@@ -1,4 +1,4 @@
-# ImageNet-training-script
+# ImageNet-1K-training-script
 ImageNet(ILSVRC-2012) training script by timm library
 
 ## Introduction
@@ -19,12 +19,13 @@ The ImageNet Large Scale Visual Recognition Challenge (ILSVRC)[[2]](2) evaluates
 Py**T**orch **Im**age **M**odels (timm) is a collection of image models, layers, utilities, optimizers, schedulers, data-loaders / augmentations, and reference training / validation scripts that aim to pull together a wide variety of SOTA models with ability to reproduce ImageNet training results.
 
 
-## Download ILSVRC dataset in a usable way
+## Setting Up the ILSVRC Dataset for Use with PyTorch
 
-Since *torchvision.datasets* doesn't contain ILSVRC dataset, we need to download and configure it by ourselves in an appropriate way to satisfy the requirements of timm library.
+The `torchvision.datasets` library doesn't include the ILSVRC dataset, so we'll need to manually download and set it up for use with the `timm` library. Here's a step-by-step guide to get you started.
 
-Firstly, we create the folder for this project and split the folder for train set and the folder for test set:
+### Step 1: Prepare Directory Structure
 
+First up, let's create a dedicated folder for our ImageNet classification project and organize it into training and validation subfolders:
 
 ```bash
 mkdir ImageNet_classification
@@ -32,22 +33,46 @@ cd ImageNet_classification
 mkdir train
 mkdir val
 ```
-Then download training set and validation set on official net:
+
+### Step 2: Download the Dataset
+
+Next, we'll grab the training and validation datasets from the official ImageNet repository:
+
 ```bash
+# Download the training set
 cd train
 wget -c https://image-net.org/data/ILSVRC/2012/ILSVRC2012_img_train.tar
-cd..
+
+# Go back to the base directory
+cd ..
+
+# Download the validation set
 cd val
 wget -c https://image-net.org/data/ILSVRC/2012/ILSVRC2012_img_val.tar
+
+# Return to the base directory again
 cd ..
 ```
-Decompression training file and configure it in an appropriate way to satisfy the requirements of timm library:
+
+### Step 3: Extract and Set Up the Data
+
+Finally, we need to extract the downloaded files and set them up:
+
 ```bash
+# Extract the training data
 cd train
 tar -xvf ILSVRC2012_img_train.tar
+
+# Go back to the base directory
 cd ..
+
+# Extract the validation data and make its format similar to training data
 cd val
 tar -xvf ILSVRC2012_img_val.tar
+./valprep.sh
+cd ..
+
+# All done! Your data is ready.
 ```
 
 
