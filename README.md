@@ -1,5 +1,5 @@
-# ImageNet-1K-training-script
-ImageNet(ILSVRC-2012) training script by timm library
+# ImageNet-1K training and validation
+ImageNet(ILSVRC-2012) training and validation by timm library
 
 ## Introduction
 [1] J. Deng, W. Dong, R. Socher, L.-J. Li, K. Li and L. Fei-Fei, **ImageNet: A Large-Scale Hierarchical Image Database.** *IEEE Computer Vision and Pattern Recognition (CVPR), 2009.* [pdf](https://image-net.org/static_files/papers/imagenet_cvpr09.pdf) 
@@ -19,7 +19,7 @@ The ImageNet Large Scale Visual Recognition Challenge (ILSVRC)[[2]](2) evaluates
 Py**T**orch **Im**age **M**odels (timm) is a collection of image models, layers, utilities, optimizers, schedulers, data-loaders / augmentations, and reference training / validation scripts that aim to pull together a wide variety of SOTA models with ability to reproduce ImageNet training results.
 
 
-## Setting Up the ILSVRC Dataset for Use with PyTorch
+## Setting Up the ImageNet-1K Dataset for Use with PyTorch
 
 The `torchvision.datasets` library doesn't include the ILSVRC dataset, so you'll need to manually download and set it up for use with the `timm` library. Here's a step-by-step guide to get you started.
 
@@ -109,3 +109,28 @@ This command lists the first five pretrained models available in timm (which are
 ```
 
 ### Step 2: Start training
+
+Now that you've set up our dataset, let's move on to the exciting part: training our model! We'll be using PyTorch's `DistributedDataParallel` (DDP) which allows for efficient distributed training on a single node with one or more GPUs.
+
+Here's a simple command to kick off the training process:
+```bash
+torchrun --nproc_per_node=2 train.py /.../ImageNet_classification --model seresnet34 --sched cosine --epochs 150 --warmup-epochs 5 --lr 0.4 --reprob 0.5 --remode pixel --batch-size 256 --amp -j 4
+```
+This command initiates a distributed training session using 2 processes per node, which is suitable for a single machine with multiple GPUs.
+
+### Additional Resources:
+- For more detailed training scripts, visit the [timm training documentation.](https://huggingface.co/docs/timm/training_script)
+- If you are interested in multi-node training, refer to Pytorch's guide on [Distributed Data Parallel Training.](https://pytorch.org/tutorials/intermediate/ddp_series_multinode.html)
+
+## Validation & Inference on ImageNet-1K by timm library
+
+Validation and inference scripts are similar in usage. One outputs metrics on a validation set and the other outputs topk class ids in a csv. Specify the folder containing validation images, not the base as in training script.
+
+To validate with the model’s pretrained weights (if they exist):
+```bash
+python validate.py /.../ImageNet_classification/val/ --model seresnext26_32x4d --pretrained
+```
+To run inference from a checkpoint:
+```bash
+python inference.py /.../ImageNet_classification/val/ --model mobilenetv3_large_100 --checkpoint ./output/train/model_best.pth.tar
+```
