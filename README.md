@@ -21,7 +21,7 @@ Py**T**orch **Im**age **M**odels (timm) is a collection of image models, layers,
 
 ## Setting Up the ILSVRC Dataset for Use with PyTorch
 
-The `torchvision.datasets` library doesn't include the ILSVRC dataset, so we'll need to manually download and set it up for use with the `timm` library. Here's a step-by-step guide to get you started.
+The `torchvision.datasets` library doesn't include the ILSVRC dataset, so you'll need to manually download and set it up for use with the `timm` library. Here's a step-by-step guide to get you started.
 
 ### Step 1: Prepare Directory Structure
 
@@ -36,7 +36,7 @@ mkdir val
 
 ### Step 2: Download the Dataset
 
-Next, we'll grab the training and validation datasets from the official ImageNet repository:
+Next, grabing the training and validation datasets from the official ImageNet repository:
 
 ```bash
 # Download the training set
@@ -56,7 +56,7 @@ cd ..
 
 ### Step 3: Extract and Set Up the Data
 
-Finally, we need to extract the downloaded files and set them up:
+Finally, you need to extract the downloaded files and set them up:
 
 ```bash
 # Extract the training data
@@ -75,4 +75,37 @@ cd ..
 # All done! Your data is ready.
 ```
 
+## Training models on ImageNet-1K by timm library
 
+### Step 1: Installation of timm (Refer to https://huggingface.co/docs/timm/installation)
+
+Start a virtual environment inside your directory:
+
+```bash
+# new python environment for pytorch
+conda create -n ImageNet_training
+
+# activate the new environment
+conda activate ImageNet_training
+
+# install basic packages for scientific computing
+conda install -y numpy matplotlib scipy scikit-learn jupyter ipython pandas
+
+# install timm
+pip install timm
+
+```
+Alternatively, you can install timm from GitHub directly to get the latest, bleeding-edge version:
+```bash
+pip install git+https://github.com/rwightman/pytorch-image-models.git
+```
+Run the following command to check if timm has been properly installed:
+```bash
+python -c "from timm import list_models; print(list_models(pretrained=True)[:5])"
+```
+This command lists the first five pretrained models available in timm (which are sorted alphebetically). You should see the following output:
+```bash
+['adv_inception_v3', 'bat_resnext26ts', 'beit_base_patch16_224', 'beit_base_patch16_224_in22k', 'beit_base_patch16_384']
+```
+
+### Step 2: Start training
