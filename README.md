@@ -120,6 +120,7 @@ This command initiates a distributed training session using 2 processes per node
 
 ### Additional Resources:
 - For more detailed training scripts, visit the [timm training documentation.](https://huggingface.co/docs/timm/training_script)
+- A Practitioner’s Guide for [timm library.](https://towardsdatascience.com/getting-started-with-pytorch-image-models-timm-a-practitioners-guide-4e77b4bf9055)
 - If you are interested in multi-node training, refer to Pytorch's guide on [Distributed Data Parallel Training.](https://pytorch.org/tutorials/intermediate/ddp_series_multinode.html)
 
 ## Validation & Inference on ImageNet-1K by timm library
