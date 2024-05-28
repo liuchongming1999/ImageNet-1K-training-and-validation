@@ -25,7 +25,7 @@ The `torchvision.datasets` library doesn't include the ILSVRC dataset, so you'll
 
 ### Step 1: Prepare Directory Structure
 
-First up, let's create a dedicated folder for our ImageNet classification project and organize it into training and validation subfolders:
+First up, let's create a dedicated folder for ImageNet classification project and organize it into training and validation subfolders:
 
 ```bash
 mkdir ImageNet_classification
@@ -110,7 +110,7 @@ This command lists the first five pretrained models available in timm (which are
 
 ### Step 2: Start training
 
-Now that you've set up our dataset, let's move on to the exciting part: training our model! We'll be using PyTorch's `DistributedDataParallel` (DDP) which allows for efficient distributed training on a single node with one or more GPUs.
+Now that you've set up the dataset, let's move on to the exciting part: training models! You'll be using PyTorch's `DistributedDataParallel` (DDP) which allows for efficient distributed training on a single node with one or more GPUs.
 
 Here's a simple command to kick off the training process:
 ```bash
